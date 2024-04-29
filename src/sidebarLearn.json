@@ -11,11 +11,11 @@
       "path": "/learn",
       "routes": [
         {
-          "title": "教學：Tic-Tac-Toe",
+          "title": "教程：井字遊戲",
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
-          "title": "用 React 思考",
+          "title": "React 哲學",
           "path": "/learn/thinking-in-react"
         }
       ]

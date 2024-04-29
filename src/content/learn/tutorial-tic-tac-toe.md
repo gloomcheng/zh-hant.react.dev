@@ -1,31 +1,31 @@
 ---
-title: 'Tutorial: Tic-Tac-Toe'
+title: '教程：井字遊戲'
 ---
 
 <Intro>
 
-You will build a small tic-tac-toe game during this tutorial. This tutorial does not assume any existing React knowledge. The techniques you'll learn in the tutorial are fundamental to building any React app, and fully understanding it will give you a deep understanding of React.
+本教程將帶領你逐步完成一個簡單的井字遊戲，即使你對 React 毫不了解也完全沒問題。在教程中，你將學到建立 React 應用程式的基礎技巧，搞懂這些技巧將使你對 React 有更深入的理解。
 
 </Intro>
 
 <Note>
 
-This tutorial is designed for people who prefer to **learn by doing** and want to quickly try making something tangible. If you prefer learning each concept step by step, start with [Describing the UI.](/learn/describing-the-ui)
+本教程適合喜歡 **做中學** 並且想要儘快親自動手實踐的人。如果你更偏好逐步學習各個單元，你可以從[描繪 UI](/learn/describing-the-ui) 章節開始學起。
 
 </Note>
 
-The tutorial is divided into several sections:
+本教程分為以下幾個部分:
 
-- [Setup for the tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-- [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-- [Completing the game](#completing-the-game) will teach you **the most common techniques** in React development.
-- [Adding time travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
+- [設置開發環境](#setup-for-the-tutorial)：為你提供一個快速開始本教程的 **起點**。
+- [專案總覽](#overview)：讓你掌握 React 的 **基礎概念**，包括元件（component）、props 和 state 等。
+- [完成遊戲](#completing-the-game)：講解 React 開發 **常用的實踐技巧**。
+- [計時功能](#adding-time-travel)：幫助你 **深入理解** React 獨特的優勢所在。
 
-### What are you building? {/*what-are-you-building*/}
+### 你將完成什麼？ {/*what-are-you-building*/}
 
-In this tutorial, you'll build an interactive tic-tac-toe game with React.
+在這個教程中，你將使用 React 建構一個互動式的井字遊戲。
 
-You can see what it will look like when you're finished here:
+你可以在下面預覽完成後的程式成果：
 
 <Sandpack>
 
@@ -194,13 +194,13 @@ body {
 
 </Sandpack>
 
-If the code doesn't make sense to you yet, or if you are unfamiliar with the code's syntax, don't worry! The goal of this tutorial is to help you understand React and its syntax.
+如果你還不能理解上面的程式碼，或者對程式碼的語法不太熟悉，請不用擔心！這個教程的目標就是要幫助你理解 React 及其語法。
 
-We recommend that you check out the tic-tac-toe game above before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and it is updated as the game progresses.
+我們建議你在繼續閱讀本教程之前，先試玩上面的井字遊戲。你會發現棋盤右側有個編號列表，記錄了遊戲中的所有動作，並且會隨著遊戲的進行而更新。
 
-Once you've played around with the finished tic-tac-toe game, keep scrolling. You'll start with a simpler template in this tutorial. Our next step is to set you up so that you can start building the game.
+當你體驗完遊戲後，就可以繼續往下閱讀教程內容了。我們將從一個簡單的範本開始本教程。下一步，我們將開始設置開發環境，以便開始打造井字遊戲。
 
-## Setup for the tutorial {/*setup-for-the-tutorial*/}
+## 設置開發環境 {/*setup-for-the-tutorial*/}
 
 In the live code editor below, click **Fork** in the top-right corner to open the editor in a new tab using the website CodeSandbox. CodeSandbox lets you write code in your browser and preview how your users will see the app you've created. The new tab should display an empty square and the starter code for this tutorial.
 
@@ -264,7 +264,7 @@ body {
 You can also follow this tutorial using your local development environment. To do this, you need to:
 
 1. Install [Node.js](https://nodejs.org/en/)
-1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **File > Export to ZIP** in that menu to download an archive of the files locally
+1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **Download Sandbox** in that menu to download an archive of the files locally
 1. Unzip the archive, then open a terminal and `cd` to the directory you unzipped
 1. Install the dependencies with `npm install`
 1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
@@ -273,7 +273,7 @@ If you get stuck, don't let this stop you! Follow along online instead and try a
 
 </Note>
 
-## Overview {/*overview*/}
+## 專案總覽 {/*overview*/}
 
 Now that you're set up, let's get an overview of React!
 
@@ -337,7 +337,7 @@ import './styles.css';
 import App from './App';
 ```
 
-Lines 1-5 brings all the necessary pieces together: 
+Lines 1-5 bring all the necessary pieces together:
 
 * React
 * React's library to talk to web browsers (React DOM)
@@ -551,7 +551,7 @@ export default function Board() {
 }
 ```
 
-Note how unlike the browser `div`s, your own components `Board` and `Square` must start with a capital letter. 
+Note how unlike the browser `div`s, your own components `Board` and `Square` must start with a capital letter.
 
 Let's take a look:
 
@@ -1094,7 +1094,7 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
-Now you'll connect the `onSquareClick` prop to a function in the `Board` component that you'll name `handleClick`. To connect `onSquareClick` to `handleClick` you'll pass a function to the `onSquareClick` prop of the first `Square` component: 
+Now you'll connect the `onSquareClick` prop to a function in the `Board` component that you'll name `handleClick`. To connect `onSquareClick` to `handleClick` you'll pass a function to the `onSquareClick` prop of the first `Square` component:
 
 ```js {7}
 export default function Board() {
@@ -2073,12 +2073,12 @@ export default function Game() {
 }
 ```
 
-You can see what your code should look like below. Note that you should see an error in the developer tools console that says: 
+You can see what your code should look like below. Note that you should see an error in the developer tools console that says:
 
 <ConsoleBlock level="warning">
 Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of &#96;Game&#96;.
 </ConsoleBlock>
-  
+
 You'll fix this error in the next section.
 
 <Sandpack>

@@ -8,7 +8,7 @@ import cn from 'classnames';
 
 import CodeBlock from './CodeBlock';
 import {CodeDiagram} from './CodeDiagram';
-import ConsoleBlock from './ConsoleBlock';
+import {ConsoleBlock, ConsoleLogLine, ConsoleBlockMulti} from './ConsoleBlock';
 import ExpandableCallout from './ExpandableCallout';
 import ExpandableExample from './ExpandableExample';
 import {H1, H2, H3, H4, H5} from './Heading';
@@ -19,6 +19,7 @@ import Link from './Link';
 import {PackageImport} from './PackageImport';
 import Recap from './Recap';
 import Sandpack from './Sandpack';
+import SandpackWithHTMLOutput from './SandpackWithHTMLOutput';
 import Diagram from './Diagram';
 import DiagramGroup from './DiagramGroup';
 import SimpleCallout from './SimpleCallout';
@@ -32,6 +33,7 @@ import type {Toc, TocItem} from './TocContext';
 import {TeamMember} from './TeamMember';
 
 import ErrorDecoder from './ErrorDecoder';
+import {IconCanary} from '../Icon/IconCanary';
 
 function CodeStep({children, step}: {children: any; step: number}) {
   return (
@@ -91,6 +93,20 @@ const Note = ({children}: {children: React.ReactNode}) => (
 
 const Canary = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="canary">{children}</ExpandableCallout>
+);
+
+const CanaryBadge = ({title}: {title: string}) => (
+  <span
+    title={title}
+    className={
+      'text-base font-display px-1 py-0.5 font-bold bg-gray-10 dark:bg-gray-60 text-gray-60 dark:text-gray-10 rounded'
+    }>
+    <IconCanary
+      size="s"
+      className={'inline me-1 mb-0.5 text-sm text-gray-60 dark:text-gray-10'}
+    />
+    Canary only
+  </span>
 );
 
 const Blockquote = ({
@@ -179,7 +195,7 @@ function YouWillLearn({
   children: any;
   isChapter?: boolean;
 }) {
-  let title = isChapter ? 'In this chapter' : 'You will learn';
+  let title = isChapter ? '在本章節' : '你將會學到';
   return <SimpleCallout title={title}>{children}</SimpleCallout>;
 }
 
@@ -190,7 +206,7 @@ function Recipes(props: any) {
 
 function AuthorCredit({
   author = 'Rachel Lee Nabors',
-  authorLink = 'http://rachelnabors.com/',
+  authorLink = 'https://nearestnabors.com/',
 }: {
   author: string;
   authorLink: string;
@@ -404,6 +420,8 @@ export const MDXComponents = {
   pre: CodeBlock,
   CodeDiagram,
   ConsoleBlock,
+  ConsoleBlockMulti,
+  ConsoleLogLine,
   DeepDive: (props: {
     children: React.ReactNode;
     title: string;
@@ -429,11 +447,13 @@ export const MDXComponents = {
   MathI,
   Note,
   Canary,
+  CanaryBadge,
   PackageImport,
   ReadBlogPost,
   Recap,
   Recipes,
   Sandpack,
+  SandpackWithHTMLOutput,
   TeamMember,
   TerminalBlock,
   YouWillLearn,
